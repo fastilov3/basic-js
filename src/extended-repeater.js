@@ -10,7 +10,7 @@ module.exports = function repeater(
     } = {}
 ) {
     const makeSub = (n, s1, s2) =>
-        n < 2 ? `${s1}` : `${s1}` + `${s2}` + makeSub(n - 1, s1, s2);
+        n ? `${s1}` : `${s1}` + `${s2}` + makeSub(n - 1, s1, s2);
     const subStray = makeSub(additionRepeatTimes, addition, additionSeparator);
     return makeSub(repeatTimes, `${str}${subStray}`, separator);
 };
