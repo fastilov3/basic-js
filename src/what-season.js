@@ -1,12 +1,12 @@
 const CustomError = require("../extensions/custom-error");
 
 module.exports = function getSeason(date) {
-  if (isNaN(date)) {
-    throw new Error('');
-  };
-  if (date == null) {
-    return 'Unable to determine the time of year!';
-  }
+  if (date === undefined) return "Unable to determine the time of year!";
+    else if (typeof date !== "object") throw new Error("Invalid argument");
+
+    for (let prop of Object.getOwnPropertyNames(Date.prototype)) {
+        if (date[prop] !== Date.prototype[prop]) throw new Error("");
+    }
   let d = new Date(date);
   if (d.getMonth() === 11 || d.getMonth() === 0 || d.getMonth() === 1) {
     return 'winter';
